@@ -37,6 +37,16 @@ IOS devices or Android devices with 4.3+ ROM
 Go to this site for more tutorial:
 http://www.dfrobot.com/wiki/index.php/Bluno_SKU:DFR0267
 
+## Deploying
+
+### _How to setup the deployment environment_
+
+- _Required hardware._
+[BLUNO ×1](http://www.dfrobot.com/index.php?route=product/product&product_id=1044#.UoyIUpH7k8M)
+Android 4.3+ Devices with BLE or IOS 7.0+ Devices
+[Accessory Shield with Arduino ×1](http://www.dfrobot.com/index.php?route=product/product&product_id=1045#.UoyJtZH7k8M)
+[Micro USB cable x1](http://www.dfrobot.com/index.php?route=product/product&filter_name=micro%20usb&product_id=1076#.Uv2K0nnF9H0)
+
 ## Contributing changes
 
 - _Join the forums for dev discussions_
