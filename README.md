@@ -12,40 +12,32 @@ _to start working on the project, take a look at the following steps_
 
 1. _What dependencies does it have and how do I install them?_
 
-You may need the Arduino IDE
-If you want to recompile the application on Android device, you will need the eclipse with Android bundle.
-If you want to recompile the application on IOS device, you will need xcode.
+You may need the Arduino IDE<br />  
+If you want to recompile the application on Android device, you will need the eclipse with Android bundle.<br />  
+If you want to recompile the application on IOS device, you will need xcode.<br />  
 
 2. _How can I see the project working before I change anything?_
 
-Go to this site for tutorial:
+Go to this site for tutorial:<br />  
 http://www.dfrobot.com/wiki/index.php/Bluno_SKU:DFR0267
 
 3. _What hardware I need and where to get it?_
 You will need:
-Bluno
-Power supply
-USB cable
+[BLUNO ×1](http://www.dfrobot.com/index.php?route=product/product&product_id=1044#.UoyIUpH7k8M)<br />  
+Android 4.3+ Devices with BLE or IOS 7.0+ Devices<br />  
+[Accessory Shield with Arduino ×1](http://www.dfrobot.com/index.php?route=product/product&product_id=1045#.UoyJtZH7k8M)<br />  
+[Micro USB cable x1](http://www.dfrobot.com/index.php?route=product/product&filter_name=micro%20usb&product_id=1076#.Uv2K0nnF9H0)<br />  
 
-You can get it at
-DFRobot.com
+You can get it at<br />  
+DFRobot.com<br />  
 
-IOS devices or Android devices with 4.3+ ROM
+IOS devices or Android devices with 4.3+ ROM<br />  
 
 4. _How t start?_
 
-Go to this site for more tutorial:
+Go to this site for more tutorial:<br />  
 http://www.dfrobot.com/wiki/index.php/Bluno_SKU:DFR0267
 
-## Deploying
-
-### _How to setup the deployment environment_
-
-- _Required hardware._
-[BLUNO ×1](http://www.dfrobot.com/index.php?route=product/product&product_id=1044#.UoyIUpH7k8M)
-Android 4.3+ Devices with BLE or IOS 7.0+ Devices
-[Accessory Shield with Arduino ×1](http://www.dfrobot.com/index.php?route=product/product&product_id=1045#.UoyJtZH7k8M)
-[Micro USB cable x1](http://www.dfrobot.com/index.php?route=product/product&filter_name=micro%20usb&product_id=1076#.Uv2K0nnF9H0)
 
 ## Contributing changes
 
