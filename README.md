@@ -6,6 +6,25 @@ BlunoBasicDemo
 
 _Description: This is a basic Demo for Bluno including all the code and executable on Android,IOS and Android.You can easily develop your own with this Demo._
 
+## BLE Details
+
+*DF Robot Service:*
+Id: 0000dfb0-0000-1000-8000-00805f9b34fb
+
+*DF Robot Characteristics:*
+Name: Serial Port
+Id: 0000dfb1-0000-1000-8000-00805f9b34fb
+  
+Name: Command
+Id: 0000dfb2-0000-1000-8000-00805f9b34fb
+
+*DF Robot Descriptors:*
+(**same for both characteristics**)
+Name: Read
+Name: WriteWithoutResponse
+Name: Write
+Name: Notify
+
 ## Project Setup
 
 _to start working on the project, take a look at the following steps_ 
