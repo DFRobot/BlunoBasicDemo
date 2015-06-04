@@ -477,7 +477,7 @@ public abstract  class BlunoLibrary  extends Activity{
                 }
                 else if(uuid.equals(CommandUUID)){
                 	mCommandCharacteristic = gattCharacteristic;
-                	System.out.println("mSerialPortCharacteristic  "+mSerialPortCharacteristic.getUuid().toString());
+                	System.out.println("mCommandCharacteristic  "+mCommandCharacteristic.getUuid().toString());
 //                    updateConnectionState(R.string.comm_establish);
                 }
             }
