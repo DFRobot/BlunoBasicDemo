@@ -51,10 +51,10 @@ public abstract  class BlunoLibrary  extends Activity{
 	}
 	
 	private int mBaudrate=115200;	//set the default baud rate to 115200
-	private String mPassword="AT+PASSWOR=DFRobot\r\n";
+	private String mPassword="AT+PASSWORD=DFRobot\r\n";
 	
 	
-	private String mBaudrateBuffer = "AT+CURRUART="+mBaudrate+"\r\n";
+	private String mBaudrateBuffer = "AT+UART="+mBaudrate+"\r\n";
 	
 //	byte[] mBaudrateBuffer={0x32,0x00,(byte) (mBaudrate & 0xFF),(byte) ((mBaudrate>>8) & 0xFF),(byte) ((mBaudrate>>16) & 0xFF),0x00};;
 	
