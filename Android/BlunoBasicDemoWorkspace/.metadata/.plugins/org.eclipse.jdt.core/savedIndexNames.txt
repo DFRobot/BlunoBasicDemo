@@ -1,4 +1,0 @@
-INDEX VERSION 1.126+/Users/qiao/Documents/DFRobot/GitHubRelease/BlunoBasicDemo/Android/BlunoBasicDemoWorkspace/.metadata/.plugins/org.eclipse.jdt.core
-3827835343.index
-4061818135.index
-912197541.index
