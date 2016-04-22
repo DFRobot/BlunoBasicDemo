@@ -28,16 +28,15 @@
 
 + (id)sharedInstance
 {
-    static DFBlunoManager* this    = nil;
+	static DFBlunoManager* this	= nil;
     
-    if (!this)
+	if (!this)
     {
-        this = [[DFBlunoManager alloc] init];
+		this = [[DFBlunoManager alloc] init];
         this.dicBleDevices = [[NSMutableDictionary alloc] init];
         this.dicBlunoDevices = [[NSMutableDictionary alloc] init];
         this->_bSupported = NO;
         this.runOnMainThread = YES;
-        this.centralManager = [[CBCentralManager alloc]initWithDelegate:this queue:nil];
     }
     
     return this;
