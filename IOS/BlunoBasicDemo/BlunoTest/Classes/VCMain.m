@@ -115,7 +115,7 @@
 {
     
 }
--(void)didReceiveData:(NSData*)data Device:(DFBlunoDevice*)dev
+-(void)didReceiveData:(NSData*)data device:(DFBlunoDevice*)dev
 {
     self.lbReceivedMsg.text = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }

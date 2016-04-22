@@ -66,7 +66,7 @@
 [""] *
 [""] *	@return	void
 [""] */
--(void)didReceiveData:(NSData*)data Device:(DFBlunoDevice*)dev;
+-(void)didReceiveData:(NSData*)data device:(DFBlunoDevice*)dev;
 
 
 @end
@@ -74,6 +74,7 @@
 @interface DFBlunoManager : NSObject<CBCentralManagerDelegate,CBPeripheralDelegate>
 
 @property (nonatomic,weak) id<DFBlunoDelegate> delegate;
+@property (nonatomic) BOOL runOnMainThread; // defaults to YES
 
 /**
 [""] *	@brief	Singleton
