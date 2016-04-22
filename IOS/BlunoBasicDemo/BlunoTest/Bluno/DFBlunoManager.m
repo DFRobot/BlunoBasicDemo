@@ -13,7 +13,7 @@
 @interface DFBlunoManager ()
 {
     BOOL _bSupported;
-	dispatch_queue_t _backgroundQueue;
+    dispatch_queue_t _backgroundQueue;
 }
 
 @property (strong,nonatomic) CBCentralManager* centralManager;
@@ -28,26 +28,26 @@
 
 + (id)sharedInstance
 {
-	static DFBlunoManager* this	= nil;
+    static DFBlunoManager* this    = nil;
     
-	if (!this)
+    if (!this)
     {
-		this = [[DFBlunoManager alloc] init];
+        this = [[DFBlunoManager alloc] init];
         this.dicBleDevices = [[NSMutableDictionary alloc] init];
         this.dicBlunoDevices = [[NSMutableDictionary alloc] init];
         this->_bSupported = NO;
-		this.runOnMainThread = YES;
+        this.runOnMainThread = YES;
         this.centralManager = [[CBCentralManager alloc]initWithDelegate:this queue:nil];
     }
     
-	return this;
+    return this;
 }
 
 -(void)setDelegate:(id<DFBlunoDelegate>)aDelegate
 {
-	_delegate = aDelegate;
-	_backgroundQueue = dispatch_queue_create("dfrobot.bluetooth", DISPATCH_QUEUE_SERIAL);
-	self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:_backgroundQueue];
+    _delegate = aDelegate;
+    _backgroundQueue = dispatch_queue_create("dfrobot.bluetooth", DISPATCH_QUEUE_SERIAL);
+    self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:_backgroundQueue];
 
 }
 
@@ -63,14 +63,14 @@
     blunoDev->_bReadyToWrite = YES;
     if ([((NSObject*)_delegate) respondsToSelector:@selector(readyToCommunicate:)])
     {
-		if (self.runOnMainThread) {
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[_delegate readyToCommunicate:blunoDev];
-			});
-		} else {
-			[_delegate readyToCommunicate:blunoDev];
-		}
-	}
+        if (self.runOnMainThread) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_delegate readyToCommunicate:blunoDev];
+            });
+        } else {
+            [_delegate readyToCommunicate:blunoDev];
+        }
+    }
     
 }
 
@@ -157,13 +157,13 @@
     
     if ([((NSObject*)_delegate) respondsToSelector:@selector(bleDidUpdateState:)])
     {
-		if (self.runOnMainThread) {
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[_delegate bleDidUpdateState:_bSupported];
-			});
-		} else {
-			[_delegate bleDidUpdateState:_bSupported];
-		}
+        if (self.runOnMainThread) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_delegate bleDidUpdateState:_bSupported];
+            });
+        } else {
+            [_delegate bleDidUpdateState:_bSupported];
+        }
     }
     
 }
@@ -180,13 +180,13 @@
             if ([((NSObject*)_delegate) respondsToSelector:@selector(didDiscoverDevice:)])
             {
                 DFBlunoDevice* blunoDev = [self.dicBlunoDevices objectForKey:key];
-				if (self.runOnMainThread) {
-					dispatch_async(dispatch_get_main_queue(), ^{
-						[_delegate didDiscoverDevice:blunoDev];
-					});
-				} else {
-					[_delegate didDiscoverDevice:blunoDev];
-				}
+                if (self.runOnMainThread) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [_delegate didDiscoverDevice:blunoDev];
+                    });
+                } else {
+                    [_delegate didDiscoverDevice:blunoDev];
+                }
             }
         }
     }
@@ -203,13 +203,13 @@
 
         if ([((NSObject*)_delegate) respondsToSelector:@selector(didDiscoverDevice:)])
         {
-			if (self.runOnMainThread) {
-				dispatch_async(dispatch_get_main_queue(), ^{
-					[_delegate didDiscoverDevice:blunoDev];
-				});
-			} else {
-				[_delegate didDiscoverDevice:blunoDev];
-			}
+            if (self.runOnMainThread) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [_delegate didDiscoverDevice:blunoDev];
+                });
+            } else {
+                [_delegate didDiscoverDevice:blunoDev];
+            }
         }
     }
 }
@@ -228,13 +228,13 @@
     blunoDev->_bReadyToWrite = NO;
     if ([((NSObject*)_delegate) respondsToSelector:@selector(didDisconnectDevice:)])
     {
-		if (self.runOnMainThread) {
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[_delegate didDisconnectDevice:blunoDev];
-			});
-		} else {
-			[_delegate didDisconnectDevice:blunoDev];
-		}
+        if (self.runOnMainThread) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_delegate didDisconnectDevice:blunoDev];
+            });
+        } else {
+            [_delegate didDisconnectDevice:blunoDev];
+        }
     }
 }
 
@@ -267,13 +267,13 @@
     {
         NSString* key = [peripheral.identifier UUIDString];
         DFBlunoDevice* blunoDev = [self.dicBlunoDevices objectForKey:key];
-		if (self.runOnMainThread) {
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[_delegate didReceiveData:characteristic.value device:blunoDev];
-			});
-		} else {
-			[_delegate didReceiveData:characteristic.value device:blunoDev];
-		}
+        if (self.runOnMainThread) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_delegate didReceiveData:characteristic.value device:blunoDev];
+            });
+        } else {
+            [_delegate didReceiveData:characteristic.value device:blunoDev];
+        }
     }
 }
 
@@ -283,13 +283,13 @@
     {
         NSString* key = [peripheral.identifier UUIDString];
         DFBlunoDevice* blunoDev = [self.dicBlunoDevices objectForKey:key];
-		if (self.runOnMainThread) {
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[_delegate didWriteData:blunoDev];
-			});
-		} else {
-			[_delegate didWriteData:blunoDev];
-		}
+        if (self.runOnMainThread) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_delegate didWriteData:blunoDev];
+            });
+        } else {
+            [_delegate didWriteData:blunoDev];
+        }
     }
     
 }
