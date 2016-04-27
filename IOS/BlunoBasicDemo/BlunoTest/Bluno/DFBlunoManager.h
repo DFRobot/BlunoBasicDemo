@@ -81,7 +81,7 @@
 [""] *
 [""] *	@return	DFBlunoManager
 [""] */
-+ (id)sharedInstance;
++ (instancetype)sharedInstance;
 
 /**
 [""] *	@brief	Scan the BLUNO device
