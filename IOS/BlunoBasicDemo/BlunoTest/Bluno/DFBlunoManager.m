@@ -223,11 +223,11 @@
 -(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
     
-    if ([((NSObject*)_delegate) respondsToSelector:@selector(didReceiveData:Device:)])
+    if ([((NSObject*)_delegate) respondsToSelector:@selector(didReceiveData:device:)])
     {
         NSString* key = [peripheral.identifier UUIDString];
         DFBlunoDevice* blunoDev = [self.dicBlunoDevices objectForKey:key];
-        [_delegate didReceiveData:characteristic.value Device:blunoDev];
+        [_delegate didReceiveData:characteristic.value device:blunoDev];
     }
 }
 

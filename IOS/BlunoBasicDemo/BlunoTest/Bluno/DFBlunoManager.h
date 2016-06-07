@@ -66,7 +66,7 @@
 [""] *
 [""] *	@return	void
 [""] */
--(void)didReceiveData:(NSData*)data Device:(DFBlunoDevice*)dev;
+-(void)didReceiveData:(NSData*)data device:(DFBlunoDevice*)dev;
 
 
 @end
