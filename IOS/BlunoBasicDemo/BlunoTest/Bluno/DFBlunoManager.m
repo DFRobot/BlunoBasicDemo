@@ -28,15 +28,15 @@
 + (id)sharedInstance
 {
 	static DFBlunoManager* this	= nil;
-    
-	if (!this)
-    {
+    static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+        this = [[self alloc] init];
 		this = [[DFBlunoManager alloc] init];
         this.dicBleDevices = [[NSMutableDictionary alloc] init];
         this.dicBlunoDevices = [[NSMutableDictionary alloc] init];
         this->_bSupported = NO;
         this.centralManager = [[CBCentralManager alloc]initWithDelegate:this queue:nil];
-    }
+    });
     
 	return this;
 }
