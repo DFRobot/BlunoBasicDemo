@@ -33,6 +33,14 @@
 		DEAEDC7C1D0706DD00D392D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEAEDC7A1D0706DD00D392D4 /* Main.storyboard */; };
 		DEAEDC7E1D0706DD00D392D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEAEDC7D1D0706DD00D392D4 /* Assets.xcassets */; };
 		DEAEDC811D0706DD00D392D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEAEDC7F1D0706DD00D392D4 /* LaunchScreen.storyboard */; };
+		DED765CC1D070E0200B254A1 /* BLEDevice.h in Sources */ = {isa = PBXBuildFile; fileRef = 52D019D6184AFB1F00FFEFC4 /* BLEDevice.h */; };
+		DED765CD1D070E0200B254A1 /* BLEDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D019D7184AFB1F00FFEFC4 /* BLEDevice.m */; };
+		DED765CE1D070E0200B254A1 /* BLEUtility.h in Sources */ = {isa = PBXBuildFile; fileRef = 52D019D8184AFB1F00FFEFC4 /* BLEUtility.h */; };
+		DED765CF1D070E0200B254A1 /* BLEUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D019D9184AFB1F00FFEFC4 /* BLEUtility.m */; };
+		DED765D01D070E0200B254A1 /* DFBlunoDevice.h in Sources */ = {isa = PBXBuildFile; fileRef = 52D019D2184AD82100FFEFC4 /* DFBlunoDevice.h */; };
+		DED765D11D070E0200B254A1 /* DFBlunoDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D019D3184AD82100FFEFC4 /* DFBlunoDevice.m */; };
+		DED765D21D070E0200B254A1 /* DFBlunoManager.h in Sources */ = {isa = PBXBuildFile; fileRef = 52D019CF184AD64D00FFEFC4 /* DFBlunoManager.h */; };
+		DED765D31D070E0200B254A1 /* DFBlunoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D019D0184AD64D00FFEFC4 /* DFBlunoManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +92,7 @@
 		DEAEDC7D1D0706DD00D392D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DEAEDC801D0706DD00D392D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DEAEDC821D0706DD00D392D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DED765CB1D070A1300B254A1 /* BlunoTest-Swift-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BlunoTest-Swift-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +246,7 @@
 				DEAEDC7D1D0706DD00D392D4 /* Assets.xcassets */,
 				DEAEDC7F1D0706DD00D392D4 /* LaunchScreen.storyboard */,
 				DEAEDC821D0706DD00D392D4 /* Info.plist */,
+				DED765CB1D070A1300B254A1 /* BlunoTest-Swift-Bridging-Header.h */,
 			);
 			path = "BlunoTest-Swift";
 			sourceTree = "<group>";
@@ -398,6 +408,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DED765CC1D070E0200B254A1 /* BLEDevice.h in Sources */,
+				DED765CD1D070E0200B254A1 /* BLEDevice.m in Sources */,
+				DED765CE1D070E0200B254A1 /* BLEUtility.h in Sources */,
+				DED765CF1D070E0200B254A1 /* BLEUtility.m in Sources */,
+				DED765D01D070E0200B254A1 /* DFBlunoDevice.h in Sources */,
+				DED765D11D070E0200B254A1 /* DFBlunoDevice.m in Sources */,
+				DED765D21D070E0200B254A1 /* DFBlunoManager.h in Sources */,
+				DED765D31D070E0200B254A1 /* DFBlunoManager.m in Sources */,
 				DEAEDC791D0706DD00D392D4 /* ViewController.swift in Sources */,
 				DEAEDC771D0706DD00D392D4 /* AppDelegate.swift in Sources */,
 			);
@@ -620,6 +638,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dfrobot..BlunoTest-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BlunoTest-Swift/BlunoTest-Swift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -642,6 +661,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dfrobot..BlunoTest-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BlunoTest-Swift/BlunoTest-Swift-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
