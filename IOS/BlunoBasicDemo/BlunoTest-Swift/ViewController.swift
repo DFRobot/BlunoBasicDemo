@@ -8,16 +8,59 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, DFBlunoDelegate {
+    
+    let blunoManager = DFBlunoManager.sharedInstance() as! DFBlunoManager
+    var discoveredDevices: [DFBlunoDevice] = []
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        self.blunoManager.delegate = self;
+        self.blunoManager.scan();
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func bleDidUpdateState(bleSupported: Bool) {
+        if(bleSupported)
+        {
+            self.blunoManager.scan()
+        }
+    }
+    
+    func didDiscoverDevice(dev: DFBlunoDevice!) {
+        var deviceFound = false;
+        
+        for device in self.discoveredDevices {
+            if device.isEqual(dev) {
+                deviceFound = true
+            }
+        }
+        
+        if(!deviceFound){
+            self.discoveredDevices.append(dev);
+        }
+    }
+    
+    func readyToCommunicate(dev: DFBlunoDevice!) {
+        
+    }
+    
+    func didDisconnectDevice(dev: DFBlunoDevice!) {
+        
+    }
+    
+    func didWriteData(dev: DFBlunoDevice!) {
+        
+    }
+    
+    func didReceiveData(data: NSData!, device dev: DFBlunoDevice!) {
+        
     }
 }
 
