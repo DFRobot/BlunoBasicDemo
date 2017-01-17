@@ -1,8 +1,7 @@
 package com.dfrobot.angelo.blunobasicdemo;
 
-import android.content.Context;
-import android.os.Bundle;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -35,7 +34,7 @@ public class MainActivity  extends BlunoLibrary {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 
-				serialSend(serialSendText.getText().toString());				//send the data to the BLUNO
+				serialSend(serialSendText.getText().toString()+"\r\n");				//send the data to the BLUNO
 			}
 		});
 
