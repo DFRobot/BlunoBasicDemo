@@ -65,7 +65,7 @@
     [self.txtSendMsg resignFirstResponder];
     if (self.blunoDev.bReadyToWrite)
     {
-        NSString* strTemp = self.txtSendMsg.text;
+        NSString* strTemp = [self.txtSendMsg.text stringByAppendingString:@"\r\n"];
         NSData* data = [strTemp dataUsingEncoding:NSUTF8StringEncoding];
         [self.blunoManager writeDataToDevice:data Device:self.blunoDev];
     }
