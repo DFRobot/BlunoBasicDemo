@@ -16,7 +16,7 @@ public class RingBuffer<T> {
     public boolean isEmpty() {
         return count == 0;
     }
-    
+
     public boolean isFull() {
         return count == buffer.length;
     }
@@ -26,41 +26,39 @@ public class RingBuffer<T> {
     }
 
     public void clear() {
-        count=0;
+        count = 0;
     }
-    
+
     public void push(T item) {
         if (count == buffer.length) {
-        	System.out.println("Ring buffer overflow");
+            System.out.println("Ring buffer overflow");
 //            throw new RuntimeException("Ring buffer overflow");
         }
         buffer[indexIn] = item;
         indexIn = (indexIn + 1) % buffer.length;     // wrap-around
-        if(count++ == buffer.length)
-        {
-        	count = buffer.length;
+        if (count++ == buffer.length) {
+            count = buffer.length;
         }
     }
 
     public T pop() {
         if (isEmpty()) {
-        	System.out.println("Ring buffer pop underflow");
+            System.out.println("Ring buffer pop underflow");
 
 //            throw new RuntimeException("Ring buffer underflow");
         }
         T item = buffer[indexOut];
         buffer[indexOut] = null;                  // to help with garbage collection
-        if(count-- == 0)
-        {
-        	count = 0;
+        if (count-- == 0) {
+            count = 0;
         }
         indexOut = (indexOut + 1) % buffer.length; // wrap-around
         return item;
     }
-    
+
     public T next() {
         if (isEmpty()) {
-        	System.out.println("Ring buffer next underflow");
+            System.out.println("Ring buffer next underflow");
 //            throw new RuntimeException("Ring buffer underflow");
         }
         return buffer[indexOut];
