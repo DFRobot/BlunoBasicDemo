@@ -1,14 +1,20 @@
 package com.dfrobot.angelo.blunobasicdemo;
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.content.Intent;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity  extends BlunoLibrary {
 	private Button buttonScan;
@@ -21,9 +27,8 @@ public class MainActivity  extends BlunoLibrary {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
         onCreateProcess();														//onCreate Process by BlunoLibrary
-
-
-        serialBegin(115200);													//set the Uart Baudrate on BLE chip to 115200
+        requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        serialBegin(115200);												//set the Uart Baudrate on BLE chip to 115200
 
         serialReceivedText=(TextView) findViewById(R.id.serialReveicedText);	//initial the EditText of the received data
         serialSendText=(EditText) findViewById(R.id.serialSendText);			//initial the EditText of the sending data
@@ -45,8 +50,21 @@ public class MainActivity  extends BlunoLibrary {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-
-				buttonScanOnClickProcess();										//Alert Dialog for selecting the BLE device
+				int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION);
+				if (permissionCheck != PackageManager.PERMISSION_GRANTED){
+					boolean requestCheck = ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION);
+					if (requestCheck){
+						requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+					}else {
+						new AlertDialog.Builder(MainActivity.this)
+								.setTitle("Permission Required")
+								.setMessage("Please enable location permission to use this application.")
+                                .setNeutralButton("I Understand", null)
+								.show();
+					}
+				}else {
+					buttonScanOnClickProcess(); //Alert Dialog for selecting the BLE device
+				}
 			}
 		});
 	}

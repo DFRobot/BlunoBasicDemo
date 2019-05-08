@@ -21,7 +21,7 @@
 
         <TextView
             android:id="@+id/serialReveicedText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:textSize="10sp"
@@ -53,16 +53,14 @@
     <EditText
         android:id="@+id/serialSendText"
         android:layout_width="310dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/buttonScan"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="22dp"
-        android:background="#555555"
         android:bufferType="editable"
         android:ems="10"
         android:inputType="text"
-        android:text="Data sending Area"
-        android:textColor="#999999"
+        android:hint="Data sending area"
         android:textSize="20dip" />
 
     <Button
