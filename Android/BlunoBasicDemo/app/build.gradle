@@ -1,26 +1,41 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    compileSdkVersion 30
+    buildToolsVersion '31.0.0'
 
     defaultConfig {
         applicationId "com.dfrobot.angelo.blunobasicdemo"
-        minSdkVersion 18
-        targetSdkVersion 21
+        minSdkVersion 21
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    // 自定义打包名称
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "GenerateAPK_${buildType.name}_v${versionName}.apk"
+        }
+    }
 }
 
+
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:21.0.3'
+//    compile fileTree(dir: 'libs', include: ['*.jar'])
+//    testCompile 'junit:junit:4.12'
+//    compile 'com.android.support:appcompat-v7:21.0.3'
+
+    implementation fileTree(dir: 'libs', includes: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+
 }

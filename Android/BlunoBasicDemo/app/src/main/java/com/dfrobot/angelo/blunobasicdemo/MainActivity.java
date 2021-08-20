@@ -3,12 +3,16 @@ package com.dfrobot.angelo.blunobasicdemo;
 import android.content.Context;
 import android.os.Bundle;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.List;
 
 public class MainActivity  extends BlunoLibrary {
 	private Button buttonScan;
@@ -20,6 +24,19 @@ public class MainActivity  extends BlunoLibrary {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
+		request(1000, new OnPermissionsResult() {
+			@Override
+			public void OnSuccess() {
+				Toast.makeText(MainActivity.this,"权限请求成功",Toast.LENGTH_SHORT).show();
+			}
+
+			@Override
+			public void OnFail(List<String> noPermissions) {
+				Toast.makeText(MainActivity.this,"权限请求失败",Toast.LENGTH_SHORT).show();
+			}
+		});
+
         onCreateProcess();														//onCreate Process by BlunoLibrary
 
 

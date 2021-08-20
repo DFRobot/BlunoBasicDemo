@@ -3,6 +3,8 @@ package com.dfrobot.angelo.blunobasicdemo;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.Manifest;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.annotation.SuppressLint;
@@ -21,6 +23,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,7 +37,17 @@ public abstract  class BlunoLibrary  extends Activity{
 
 	private Context mainContext=this;
 
-	
+	//需要的申请权限
+	private  String [] mStrPermission = {
+			Manifest.permission.ACCESS_FINE_LOCATION
+	};
+
+	private List<String>  mPerList   = new ArrayList<>();
+	private List<String>  mPerNoList = new ArrayList<>();
+
+	private  OnPermissionsResult permissionsResult;
+	private  int requestCode;
+
 //	public BlunoLibrary(Context theContext) {
 //		
 //		mainContext=theContext;
@@ -113,10 +127,8 @@ public abstract  class BlunoLibrary  extends Activity{
 	
     public void onCreateProcess()
     {
-    	if(!initiate())
-		{
-			Toast.makeText(mainContext, R.string.error_bluetooth_not_supported,
-					Toast.LENGTH_SHORT).show();
+    	if(!initiate()){
+			Toast.makeText(mainContext, R.string.error_bluetooth_not_supported,Toast.LENGTH_SHORT).show();
 			((Activity) mainContext).finish();
 		}
 
@@ -572,5 +584,92 @@ public abstract  class BlunoLibrary  extends Activity{
 
 			return view;
 		}
+	}
+
+	/**
+	 *
+	 * @param requestCode
+	 * @param permissionsResult
+	 */
+	public void request(int requestCode, OnPermissionsResult permissionsResult){
+        if(!checkPermissionsAll()){
+			requestPermissionAll(requestCode, permissionsResult);
+		}
+	}
+
+	/**
+	 * 判断请求单个权限
+	 * @param permissions
+	 * @return
+	 */
+	protected boolean checkPermissions(String permissions){
+    	if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+    		int check = checkSelfPermission(permissions);
+    		return check == PackageManager.PERMISSION_GRANTED;
+		}
+    	return false;
+	}
+
+	/**
+	 * 判断请求权限组
+	 * @return
+	 */
+	protected boolean checkPermissionsAll(){
+		mPerList.clear();
+		for(int i = 0; i < mStrPermission.length; i++ ){
+			boolean check = checkPermissions(mStrPermission[i]);
+			if(!check){
+                 mPerList.add(mStrPermission[i]);
+			}
+		}
+		return mPerList.size() > 0 ? false : true;
+	}
+
+	/**
+	 * 请求单个权限
+	 * @param mPermissions
+	 * @param requestCode
+	 */
+	protected void requestPermission(String[] mPermissions, int requestCode){
+         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+			requestPermissions(mPermissions,requestCode);
+		 }
+	}
+
+	/**
+	 *请求权限
+	 * @param requestCode
+	 */
+	protected void requestPermissionAll(int requestCode, OnPermissionsResult permissionsResult){
+		this.permissionsResult = permissionsResult;
+		requestPermission((String[]) mPerList.toArray(new String[mPerList.size()]),requestCode);
+	}
+
+	@Override
+	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+	    if(requestCode == requestCode){
+	    	if(grantResults.length>0){
+	    		for(int i = 0; i < grantResults.length; i++){
+	    			if(grantResults[i] == PackageManager.PERMISSION_DENIED){
+	    				System.out.println(permissions[i]);
+	    				//如果有失败
+                        mPerNoList.add(permissions[i]);
+					}
+				}
+	    		if(permissionsResult != null){
+	    			if(mPerNoList.size() == 0){
+	    				permissionsResult.OnSuccess();
+					}else {
+	    				permissionsResult.OnFail(mPerNoList);
+					}
+				}
+			}
+		}
+		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+	}
+
+	public interface OnPermissionsResult{
+		void OnSuccess();
+		void OnFail(List<String> noPermissions);
 	}
 }
